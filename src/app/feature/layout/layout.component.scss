@@ -1,0 +1,44 @@
+header {
+  width: calc(100% - 200px);
+  height: 70px;
+  display: flex;
+  background-color: #0e1742;
+  color: white;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 100px 0 100px;
+
+  nav {
+    width: 220px;
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      padding: 0 5px 2px 5px;
+      text-decoration: none;
+      color: white;
+    }
+
+    .active {
+      border-bottom: 2px solid white;
+    }
+  }
+
+  button {
+    font-size: 16px;
+    width: 95px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+
+    &:focus {
+      border: none;
+      outline: none;
+    }
+
+    &:hover {
+      transition: 0.1 ease-in;
+      background-color: white;
+    }
+  }
+}
