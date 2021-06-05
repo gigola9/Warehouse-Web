@@ -1,7 +1,13 @@
 <div class="main">
   <form class="login" [formGroup]="loginForm" (ngSubmit)="login()">
-    <input type="text" placeholder="სახელი" formControlName="nick" class="name">
-    <input type="password" placeholder="პაროლი" formControlName="pass" class="password">
+    <div class="form__group field">
+      <input  type="text" placeholder="სახელი" formControlName="nick" class="form__field" name="name" id='name' required />
+      <label for="name" class="form__label">სახელი</label>
+    </div>
+    <div class="form__group field">
+      <input  type="password" placeholder="პაროლი" formControlName="pass" class="form__field" name="name1" id='name1' required />
+      <label for="name1" class="form__label">პაროლი</label>
+    </div>
     <p>{{ this.errorText }}</p>
     <button type="submit" class="submit" [disabled]="loginForm.invalid">შესვლა</button>
   </form>

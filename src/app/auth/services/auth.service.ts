@@ -47,6 +47,8 @@ export class AuthService {
         this.loginres = m;
         localStorage.setItem('isAuthenticated', 'true');
         localStorage.setItem('role', this.loginres.role);
+        localStorage.setItem('nickname', nick);
+        localStorage.setItem('warehouse', this.loginres.warehouse);
         if (this.loginres.role === 'user') {
           this.router.navigateByUrl('/user')
         } else if (this.loginres.role === 'admin') {

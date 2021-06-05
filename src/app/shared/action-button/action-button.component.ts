@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-action-button',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./action-button.component.scss']
 })
 export class ActionButtonComponent implements OnInit {
+  @Input() iconName = '';
+  @Input() fieldText = '';
+  @Input() url = '';
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  changePage() {
+    this.router.navigateByUrl(this.url);
+  }
 }

@@ -1,0 +1,33 @@
+.not-found {
+  background-image: url("./../../../assets/img/404.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  position: relative;
+
+  div {
+    padding-top: 150px;
+    padding-left: 200px;
+    p {
+      font-size: 50px;
+      color: black;
+      font-weight: bold;
+      margin-bottom: 40px;
+    }
+
+    button {
+      cursor: pointer;
+      width: 200px;
+      height: 50px;
+      margin-top: 30px;
+      font-size: 18px;
+      font-weight: bold;
+      word-spacing: 2px;
+      background-color: #ff6d24;
+      color: white;
+      border-radius: 10px;
+      border: none;
+    }
+  }
+}

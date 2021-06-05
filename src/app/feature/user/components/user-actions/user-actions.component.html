@@ -1,4 +1,22 @@
-<app-action-button></app-action-button>
-<app-action-button></app-action-button>
-<app-action-button></app-action-button>
-<app-action-button></app-action-button>
+<div class="actions">
+  <app-action-button
+    [iconName]="'./../../../assets/icons/add.png'"
+    [fieldText]="'დამატება'"
+    [url]="'product'"
+  ></app-action-button>
+  <app-action-button
+    [iconName]="'./../../../assets/icons/import.png'"
+    [fieldText]="'იმპორტი'"
+    [url]="'import'"
+  ></app-action-button>
+  <app-action-button
+    [iconName]="'./../../../assets/icons/export.png'"
+    [fieldText]="'ექსპორტი'"
+    [url]="'export'"
+  ></app-action-button>
+  <app-action-button
+    [iconName]="'./../../../assets/icons/trend.png'"
+    [fieldText]="'სტატისტიკა'"
+    [url]="'statistic'"
+  ></app-action-button>
+</div>

@@ -1,0 +1,41 @@
+<h2>იმპორტი</h2>
+<form [formGroup]="product" (ngSubmit)="import()">
+  <div class="col1">
+    <div class="col1__name">
+      <label>მომხმარებელი<span>*</span></label>
+      <input type="text" formControlName="user">
+    </div>
+    <div class="col1__category">
+      <label>პროდუქტი<span>*</span></label>
+      <select formControlName="name">
+        <option *ngFor="let item of (productDictionary)" [value]="item.name"> {{ item.name }} </option>
+      </select>
+    </div>
+  </div>
+  <div class="col1">
+    <div class="col1__name">
+      <label>თარიღი<span>*</span></label>
+      <input type="text" formControlName="date">
+    </div>
+    <div class="col1__category">
+      <label>რაოდენობა<span>*</span></label>
+      <input type="number" formControlName="amount">
+    </div>
+  </div>
+  <div class="col2">
+    <label>მომწოდებელი<span>*</span></label>
+    <input type="text" formControlName="giver">
+  </div>
+  <div class="col2">
+    <label>კომენტარი</label>
+    <textarea formControlName="description"></textarea>
+  </div>
+  <div class="col1">
+    <div>
+      <button class="btn red" (click)="goBack()">გაუქმება</button>
+    </div>
+    <div>
+      <button class="btn" type="submit" [disabled]="product.invalid">იმპორტი</button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,32 @@
+.action-button {
+   width: 200px;
+   height: 120px;
+   background-color: white;
+   cursor: pointer;
+
+   &__icon {
+     width: 40px;
+     height: 40px;
+     margin: 20px 0px 0px 25px;
+     transition: 0.25s ease-out;
+   }
+
+   &__text {
+     font-weight: bold;
+     margin: 10px 0px 0px 25px;
+     transition: 0.25s ease-out;
+   }
+
+   &:hover {
+    .action-button__icon {
+      width: 40px;
+      height: 40px;
+      margin: 18px 0px 2px 25px;
+    }
+
+    .action-button__text {
+      font-weight: bold;
+      margin: 12px 0px 0px 25px;
+    }
+   }
+}

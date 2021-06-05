@@ -1,6 +1,6 @@
 <header>
-  <h3>Warehouse</h3>
-  <button (click)="logout()">გამოსვლა</button>
+  <h3 style="cursor: pointer;" (click)="goHome()">Warehouse</h3>
+  <a routerlink="/auth" class="button1" (click)="logout()">გამოსვლა</a>
 </header>
 <div>
   <router-outlet></router-outlet>
