@@ -1,0 +1,39 @@
+<h2>ახალი საწყობის დამატება</h2>
+<form [formGroup]="wareh" (ngSubmit)="addWarehouse()">
+  <div class="col2">
+    <label>დასახელება<span>*</span></label>
+    <input type="text" formControlName="name">
+  </div>
+  <div class="col2">
+    <label>მისამართი<span>*</span></label>
+    <input type="text" formControlName="address">
+  </div>
+  <div class="col2">
+    <label>ნომერი<span>*</span></label>
+    <input type="text" formControlName="number">
+  </div>
+  <div class="col1">
+    <div>
+      <button class="btn red" (click)="goBack()">გაუქმება</button>
+    </div>
+    <div>
+      <button class="btn" type="submit" [disabled]="wareh.invalid">დამატება</button>
+    </div>
+  </div>
+</form>
+
+<h3 style="width: 950px; margin: 0 auto; margin-bottom: 10px; margin-top: 40px; font-weight: normal;" *ngIf="wrList?.length">საწყობები</h3>
+<div class="table" style="margin-bottom: 50px;" *ngIf="wrList?.length">
+  <table class="tbl-style">
+    <tr>
+      <th>სახელი</th>
+      <th>მისამართი</th>
+      <th>ნომერი</th>
+    </tr>
+    <tr *ngFor="let item of wrList" [ngClass]="{'org': item.type === 'export', 'grn': item.type === 'import'}">
+      <td>{{ item.name }}</td>
+      <td>{{ item.address }}</td>
+      <td>{{ item.number }}</td>
+    </tr>
+  </table>
+</div>

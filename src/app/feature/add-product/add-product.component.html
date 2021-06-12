@@ -33,3 +33,26 @@
     </div>
   </div>
 </form>
+
+<h3 style="width: 950px; margin: 0 auto; margin-bottom: 10px; margin-top: 40px; font-weight: normal;" *ngIf="prList?.length && isAdmin">დასადასტურებელი პროდუქტები</h3>
+<div class="table" style="margin-bottom: 50px;" *ngIf="prList?.length && isAdmin">
+  <table class="tbl-style">
+    <tr>
+      <th>სახელი</th>
+      <th>შემომტანი</th>
+      <th>კატეგორია</th>
+      <th>კოდი</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let item of prList" [ngClass]="{'org': item.type === 'export', 'grn': item.type === 'import'}">
+      <td>{{ item.name }}</td>
+      <td>{{ item.giver }}</td>
+      <td>{{ item.category }}</td>
+      <td>{{ item.code }}</td>
+      <td style="width: 165px;">
+        <button class="act-button-edit" (click)="conf(item.name)">დამატება</button>
+        <button class="act-button-edit red" (click)="dec(item.name)" style="margin-left: 15px;">უარყოფა</button>
+      </td>
+    </tr>
+  </table>
+</div>

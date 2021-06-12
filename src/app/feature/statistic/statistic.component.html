@@ -1,0 +1,50 @@
+<h1 style="width: 950px; margin: 0 auto; margin-bottom: 20px; text-align: center; font-weight: normal; margin-top: 10px;">სტატისტიკა</h1>
+<div class="blocks">
+  <div class="prod">
+    <h3>პროდუქტები</h3>
+    <div class="scrl" id="style-7">
+      <div *ngFor="let item of pr" >
+        <p>დასახელება: {{ item.name }}</p>
+        <p>კატეგორია: {{ item.category }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="stor">
+    <h3>მარაგი</h3>
+    <div class="scrl" id="style-7">
+      <div *ngFor="let item of st">
+        <p>დასახელება: {{ item.name }}</p>
+        <p>რაოდენობა: {{ item.amount }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<h3 style="width: 950px; margin: 0 auto; margin-bottom: 10px; font-weight: normal;">ბოლო აქტივობები</h3>
+<div class="table">
+  <table class="tbl-style">
+    <tr>
+      <th>სახელი</th>
+      <th>რაოდენობა</th>
+      <th>თარიღი</th>
+      <th>მიმღები</th>
+      <th>გამცემი</th>
+      <th>ტიპი</th>
+    </tr>
+    <tr *ngFor="let item of curList | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalLength }" [ngClass]="{'org': item.type === 'export', 'grn': item.type === 'import'}">
+      <td>{{ item.productName }}</td>
+      <td>{{ item.amount }}</td>
+      <td>{{ item.date | date }}</td>
+      <td>{{ item.giver }}</td>
+      <td>{{ item.username }}</td>
+      <td>{{ item.type }}</td>
+    </tr>
+  </table>
+</div>
+
+<div style="display: flex; justify-content: center; margin-top: 10px;">
+  <pagination-controls
+    (pageChange)="changePage($event)"
+    previousLabel="უკან"
+    nextLabel="შემდეგი"
+  ></pagination-controls>
+</div>

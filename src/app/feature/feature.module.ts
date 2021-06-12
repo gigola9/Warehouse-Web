@@ -8,9 +8,14 @@ import * as fromContainers from './user/containers';
 import * as fromComponents from './user/components';
 import { SharedModule } from '../shared/shared.module';
 import { AddProductComponent } from './add-product/add-product.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImportComponent } from './import/import.component';
 import { ExportComponent } from './export/export.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { StatisticComponent } from './statistic/statistic.component';
+import { AdminComponent } from './admin/containers/admin/admin.component';
+import { UsersComponent } from './users/users.component';
+import { WarehousesComponent } from './warehouses/warehouses.component';
 
 
 @NgModule({
@@ -21,13 +26,19 @@ import { ExportComponent } from './export/export.component';
     ...fromComponents.components,
     AddProductComponent,
     ImportComponent,
-    ExportComponent
+    ExportComponent,
+    StatisticComponent,
+    AdminComponent,
+    UsersComponent,
+    WarehousesComponent
   ],
   imports: [
+    FormsModule,
     CommonModule,
     FeatureRoutingModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    NgxPaginationModule
   ],
   providers: [DatePipe]
 })

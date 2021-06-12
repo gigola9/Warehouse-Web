@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivitiesModel } from 'src/app/feature/models/ActivitiesModel';
-import { DictionariesService } from 'src/app/feature/services/dictionaries.service';
+import { ActivitiesModel } from '../models/ActivitiesModel';
+import { DictionariesService } from '../services/dictionaries.service';
 
 @Component({
-  selector: 'app-activities',
-  templateUrl: './activities.component.html',
-  styleUrls: ['./activities.component.scss']
+  selector: 'app-statistic',
+  templateUrl: './statistic.component.html',
+  styleUrls: ['./statistic.component.scss']
 })
-export class ActivitiesComponent implements OnInit {
+export class StatisticComponent implements OnInit {
 
   list!: ActivitiesModel[];
   oldList!: ActivitiesModel[];
   curList!: ActivitiesModel[];
+  st: any;
+  pr: any;
 
   totalLength!: number;
   pages!: number;
@@ -26,6 +28,12 @@ export class ActivitiesComponent implements OnInit {
       this.curList = this.list.slice(0, 10);
       this.totalLength = this.list.length;
       this.pages = this.totalLength / 10;
+    });
+    this.dictionariesService.getStorageDictionary().subscribe(m => {
+      this.st = m;
+    });
+    this.dictionariesService.getProductDictionary().subscribe(m => {
+      this.pr = m;
     })
   }
 
@@ -33,4 +41,5 @@ export class ActivitiesComponent implements OnInit {
     this.page = e;
     this.curList = this.list.slice(10 * (e - 1), (10 * (e - 1)) + 10);
   }
+
 }

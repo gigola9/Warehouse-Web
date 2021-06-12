@@ -1,1 +1,28 @@
-<p>activities works!</p>
+<div class="container">
+  <ul class="responsive-table">
+    <li class="table-header">
+      <div class="col col-1">სახელი</div>
+      <div class="col col-2">რაოდენობა</div>
+      <div class="col col-3">თარიღი</div>
+      <div class="col col-4">მიმღები</div>
+      <div class="col col-4">გამცემი</div>
+      <div class="col col-2">ტიპი</div>
+    </li>
+    <li class="table-row" *ngFor="let item of curList | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalLength }">
+      <div class="col col-1">{{ item.productName }}</div>
+      <div class="col col-2">{{ item.amount }}</div>
+      <div class="col col-3">{{ item.date | date}}</div>
+      <div class="col col-4">{{ item.giver }}</div>
+      <div class="col col-4">{{ item.username }}</div>
+      <div class="col col-2">{{ item.type }}</div>
+    </li>
+  </ul>
+</div>
+
+<div style="display: flex; justify-content: center; margin-top: 10px;">
+  <pagination-controls
+    (pageChange)="changePage($event)"
+    previousLabel="უკან"
+    nextLabel="შემდეგი"
+  ></pagination-controls>
+</div>

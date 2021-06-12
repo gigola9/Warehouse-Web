@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-user-actions',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-actions.component.scss']
 })
 export class UserActionsComponent implements OnInit {
+  @Input() admin: boolean = false;
 
   constructor() { }
 

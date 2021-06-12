@@ -1,0 +1,88 @@
+<h2>თანამშრომლის დამატება</h2>
+<form [formGroup]="user" (ngSubmit)="addUser()">
+  <div class="col2">
+    <label>სახელი<span>*</span></label>
+    <input type="text" formControlName="name">
+  </div>
+  <div class="col2">
+    <label>პაროლი<span>*</span></label>
+    <input type="password" formControlName="password">
+  </div>
+  <div class="col2">
+    <label>როლი<span>*</span></label>
+    <select formControlName="role">
+      <option value="user">მომხმარებელი</option>
+      <option value="admin">ადმინი</option>
+    </select>
+  </div>
+  <div class="col2">
+    <label>საწყობი<span>*</span></label>
+    <select formControlName="warehouse">
+      <option value="all">ყველა</option>
+      <option *ngFor="let item of warehouses" [value]="item.name">{{ item.name }}</option>
+    </select>
+  </div>
+  <div class="col1">
+    <div>
+      <button class="btn red" (click)="goBack()">გაუქმება</button>
+    </div>
+    <div>
+      <button class="btn" type="submit" [disabled]="user.invalid">დამატება</button>
+    </div>
+  </div>
+</form>
+
+<h3 style="width: 950px; margin: 0 auto; margin-bottom: 10px; margin-top: 40px; font-weight: normal;">თანამშრომლები</h3>
+<div class="table" style="margin-bottom: 50px;">
+  <table class="tbl-style">
+    <tr>
+      <th>სახელი</th>
+      <th>პაროლი</th>
+      <th>როლი</th>
+      <th>საწყობი</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let item of curList | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalLength }" [ngClass]="{'org': item.type === 'export', 'grn': item.type === 'import'}">
+      <ng-container *ngIf="!item.edit">
+        <td>{{ item.name }}</td>
+        <td>{{ passCnv(item.password) }}</td>
+        <td>{{ item.role }}</td>
+        <td>{{ item.warehouse }}</td>
+        <td style="width: 110px;">
+          <button class="act-button-edit" (click)="item.edit = !item.edit">რედაქტირება</button>
+        </td>
+      </ng-container>
+      <ng-container *ngIf="item.edit">
+        <td>
+          <input type="text" [(ngModel)]="item.name">
+        </td>
+        <td>
+          <input type="password" [(ngModel)]="item.password">
+        </td>
+        <td>
+          <select [(ngModel)]="item.role">
+            <option value="user">მომხმარებელი</option>
+            <option value="admin">ადმინი</option>
+          </select>
+        </td>
+        <td>
+          <select [(ngModel)]="item.warehouse">
+            <option value="all">ყველა</option>
+            <option *ngFor="let item of warehouses" [value]="item.name">{{ item.name }}</option>
+          </select>
+        </td>
+        <td>
+          <button class="act-button-edit" (click)="saveUser(item.name)">შენახვა</button>
+          <button class="act-button-edit" (click)="item.edit = !item.edit" style="margin-top: 5px;">გაუქმება</button>
+        </td>
+      </ng-container>
+    </tr>
+  </table>
+</div>
+<div style="display: flex; justify-content: center; margin-top: 10px;">
+  <pagination-controls
+    (pageChange)="changePage($event)"
+    previousLabel="უკან"
+    nextLabel="შემდეგი"
+  ></pagination-controls>
+</div>

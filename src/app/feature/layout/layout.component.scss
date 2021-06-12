@@ -40,3 +40,12 @@ a.button1:hover{
     margin:0.4em auto;
   }
 }
+
+h3 {
+  transition: 0.6s ease-out;
+}
+
+h3:hover {
+  color: #ffceb6;
+  transition: 0.6s ease;
+}

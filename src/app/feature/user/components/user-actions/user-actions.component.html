@@ -1,18 +1,39 @@
 <div class="actions">
   <app-action-button
+    [iconName]="'./../../../assets/icons/group.png'"
+    [fieldText]="'თანამშრომლები'"
+    [url]="'users'"
+    *ngIf="admin"
+  ></app-action-button>
+  <app-action-button
+    [iconName]="'./../../../assets/icons/warehouse.png'"
+    [fieldText]="'საწყობები'"
+    [url]="'warehouse'"
+    *ngIf="admin"
+  ></app-action-button>
+  <app-action-button
+    [iconName]="'./../../../assets/icons/box.png'"
+    [fieldText]="'პროდუქტები'"
+    [url]="'products'"
+    *ngIf="admin"
+  ></app-action-button>
+  <app-action-button
     [iconName]="'./../../../assets/icons/add.png'"
     [fieldText]="'დამატება'"
     [url]="'product'"
+    *ngIf="!admin"
   ></app-action-button>
   <app-action-button
     [iconName]="'./../../../assets/icons/import.png'"
     [fieldText]="'იმპორტი'"
     [url]="'import'"
+    *ngIf="!admin"
   ></app-action-button>
   <app-action-button
     [iconName]="'./../../../assets/icons/export.png'"
     [fieldText]="'ექსპორტი'"
     [url]="'export'"
+    *ngIf="!admin"
   ></app-action-button>
   <app-action-button
     [iconName]="'./../../../assets/icons/trend.png'"

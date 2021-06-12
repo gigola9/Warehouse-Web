@@ -1,54 +1,47 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { DictionariesService } from '../services/dictionaries.service';
 import { MainService } from '../services/main.service';
 
 @Component({
-  selector: 'app-add-product',
-  templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.scss']
+  selector: 'app-warehouses',
+  templateUrl: './warehouses.component.html',
+  styleUrls: ['./warehouses.component.scss']
 })
-export class AddProductComponent implements OnInit {
+export class WarehousesComponent implements OnInit {
 
   categoryDictionary!: any;
-  product!: FormGroup;
+  wareh!: FormGroup;
   isAdmin = false;
-  prList!: any[];
+  wrList!: any[];
 
   constructor(
     private dictionariesService: DictionariesService,
     private router: Router,
-    private route: ActivatedRoute,
     private mainService: MainService) { }
 
   ngOnInit(): void {
-    this.route.data.subscribe(m => {
-      this.isAdmin = m.admin
-    });
 
-    this.dictionariesService.getPendingProductDictionary().subscribe((m: any) => {
-      this.prList = m;
+    this.dictionariesService.getWarehouseDictionary().subscribe((m: any) => {
+      this.wrList = m;
     })
 
     this.dictionariesService.getCategorytDictionary().subscribe((m) => {
       this.categoryDictionary = m;
     });
 
-    this.product =  new FormGroup({
+    this.wareh =  new FormGroup({
       name: new FormControl({ value: '', disabled: false }, Validators.required),
-      category: new FormControl({ value: '', disabled: false }, Validators.required),
-      giver: new FormControl(),
-      code: new FormControl({ value: null, disabled: false }, Validators.required),
-      description: new FormControl()
+      address: new FormControl({ value: '', disabled: false }, Validators.required),
+      number: new FormControl({ value: '', disabled: false }, Validators.required)
     });
   }
 
-  addProduct() {
-    console.log(this.product.getRawValue());
-    this.mainService.addProduct(this.product.getRawValue()).subscribe(m => {
-      console.log(m);
-    })
+  addWarehouse() {
+    this.mainService.addWarehosue(this.wareh.getRawValue()).subscribe((m) => {
+      this.wareh.reset();
+    });
   }
 
   conf(nm: string) {

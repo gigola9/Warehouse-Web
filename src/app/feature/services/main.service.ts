@@ -9,6 +9,10 @@ export class MainService {
 
   constructor(private http: HttpClient) { }
 
+  getUser() {
+    return localStorage.getItem('nickname');
+  }
+
   addProduct(obj: any) {
     return this.http.post(`${environment.endpoint}/api/Products/Addprocut`, obj);
   }
@@ -21,7 +25,19 @@ export class MainService {
     return this.http.post(`${environment.endpoint}/api/Products/ExportProduct`, obj);
   }
 
-  getUser() {
-    return localStorage.getItem('nickname');
+  addUser(obj: any) {
+    return this.http.post(`${environment.endpoint}/api/Auth/Adduser`, obj);
+  }
+
+  editUser(obj: any) {
+    return this.http.post(`${environment.endpoint}/api/Auth/EditUser`, obj);
+  }
+
+  manageProduct(obj: any) {
+    return this.http.post(`${environment.endpoint}/api/Products/Manageproducts`, obj);
+  }
+
+  addWarehosue(obj: any) {
+    return this.http.post(`${environment.endpoint}/api/Warehouse/AddWarehouse`, obj);
   }
 }
