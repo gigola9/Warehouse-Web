@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivitiesModel } from 'src/app/feature/models/ActivitiesModel';
+import { ActivitiesModel } from 'src/app/shared/models/ActivitiesModel';
 import { DictionariesService } from 'src/app/feature/services/dictionaries.service';
 
 @Component({

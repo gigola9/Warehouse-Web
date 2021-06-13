@@ -3,14 +3,14 @@ import { CommonModule, DatePipe } from '@angular/common';
 
 import { FeatureRoutingModule } from './feature-routing.module';
 import { LayoutComponent } from './layout/layout.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { NotFoundComponent } from '../shared/not-found/not-found.component';
 import * as fromContainers from './user/containers';
 import * as fromComponents from './user/components';
 import { SharedModule } from '../shared/shared.module';
-import { AddProductComponent } from './add-product/add-product.component';
+import { AddProductComponent } from './actions/add-product/add-product.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ImportComponent } from './import/import.component';
-import { ExportComponent } from './export/export.component';
+import { ImportComponent } from './actions/import/import.component';
+import { ExportComponent } from './actions/export/export.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { StatisticComponent } from './statistic/statistic.component';
 import { AdminComponent } from './admin/containers/admin/admin.component';

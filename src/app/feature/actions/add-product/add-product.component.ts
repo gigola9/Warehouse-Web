@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DictionariesService } from '../services/dictionaries.service';
-import { MainService } from '../services/main.service';
+import { DictionariesService } from '../../services/dictionaries.service';
+import { MainService } from '../../services/main.service';
 
 @Component({
   selector: 'app-add-product',
