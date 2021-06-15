@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DictionariesService } from '../services/dictionaries.service';
 import { MainService } from '../services/main.service';
+import { NotificationsService } from '../services/notifications.service';
 
 @Component({
   selector: 'app-warehouses',
@@ -19,6 +20,7 @@ export class WarehousesComponent implements OnInit {
   constructor(
     private dictionariesService: DictionariesService,
     private router: Router,
+    private notificationsService: NotificationsService,
     private mainService: MainService) { }
 
   ngOnInit(): void {
@@ -40,24 +42,9 @@ export class WarehousesComponent implements OnInit {
 
   addWarehouse() {
     this.mainService.addWarehosue(this.wareh.getRawValue()).subscribe((m) => {
+      this.notificationsService.show();
       this.wareh.reset();
     });
-  }
-
-  conf(nm: string) {
-    const obj = {
-      name: nm,
-      status: 'accept'
-    };
-    this.mainService.manageProduct(obj).subscribe();
-  }
-
-  dec(nm: string) {
-    const obj = {
-      name: nm,
-      status: 'reject'
-    };
-    this.mainService.manageProduct(obj).subscribe();
   }
 
   goBack() {

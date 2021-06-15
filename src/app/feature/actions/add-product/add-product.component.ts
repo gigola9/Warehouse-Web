@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DictionariesService } from '../../services/dictionaries.service';
 import { MainService } from '../../services/main.service';
+import { NotificationsService } from '../../services/notifications.service';
 
 @Component({
   selector: 'app-add-product',
@@ -20,6 +21,7 @@ export class AddProductComponent implements OnInit {
     private dictionariesService: DictionariesService,
     private router: Router,
     private route: ActivatedRoute,
+    private notificationsService: NotificationsService,
     private mainService: MainService) { }
 
   ngOnInit(): void {
@@ -45,9 +47,8 @@ export class AddProductComponent implements OnInit {
   }
 
   addProduct() {
-    console.log(this.product.getRawValue());
     this.mainService.addProduct(this.product.getRawValue()).subscribe(m => {
-      console.log(m);
+      this.notificationsService.show();
     })
   }
 
@@ -56,7 +57,9 @@ export class AddProductComponent implements OnInit {
       name: nm,
       status: 'accept'
     };
-    this.mainService.manageProduct(obj).subscribe();
+    this.mainService.manageProduct(obj).subscribe((m) => {
+      this.notificationsService.show();
+    });
   }
 
   dec(nm: string) {
@@ -64,7 +67,9 @@ export class AddProductComponent implements OnInit {
       name: nm,
       status: 'reject'
     };
-    this.mainService.manageProduct(obj).subscribe();
+    this.mainService.manageProduct(obj).subscribe((m) => {
+      this.notificationsService.show();
+    });
   }
 
   goBack() {

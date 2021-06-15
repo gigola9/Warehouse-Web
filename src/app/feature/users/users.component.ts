@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DictionariesService } from '../services/dictionaries.service';
 import { MainService } from '../services/main.service';
+import { NotificationsService } from '../services/notifications.service';
 
 @Component({
   selector: 'app-users',
@@ -30,6 +31,7 @@ export class UsersComponent implements OnInit {
   constructor(
     private router: Router,
     private dictionariesService: DictionariesService,
+    private notificationsService: NotificationsService,
     private mainService: MainService) { }
 
   ngOnInit(): void {
@@ -56,11 +58,9 @@ export class UsersComponent implements OnInit {
       warehouse: '',
       id: 0
     };
-    console.log(this.curList);
 
     this.curList.forEach(element => {
       if (element.name === usr) {
-        console.log(usr);
         ob.name = element.name;
         ob.password = element.password;
         ob.role = element.role;
@@ -69,7 +69,9 @@ export class UsersComponent implements OnInit {
       }
       element.edit = false;
     });
-    this.mainService.editUser(ob).subscribe();
+    this.mainService.editUser(ob).subscribe((m) => {
+      this.notificationsService.show();
+    });
   }
 
   passCnv(ps: string) {
@@ -86,7 +88,9 @@ export class UsersComponent implements OnInit {
   }
 
   addUser() {
-    this.mainService.addUser(this.user.getRawValue()).subscribe();
+    this.mainService.addUser(this.user.getRawValue()).subscribe((m) => {
+      this.notificationsService.show();
+    });
   }
 
   goBack() {

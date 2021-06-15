@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DictionariesService } from '../../services/dictionaries.service';
 import { MainService } from '../../services/main.service';
+import { NotificationsService } from '../../services/notifications.service';
 
 @Component({
   selector: 'app-export',
@@ -20,11 +21,11 @@ export class ExportComponent implements OnInit {
     private dictionariesService: DictionariesService,
     private router: Router,
     private datePipe: DatePipe,
+    private notificationsService: NotificationsService,
     private mainService: MainService) { }
 
   ngOnInit(): void {
     this.dictionariesService.getStorageDictionary().subscribe((m) => {
-      console.log(m);
       this.productDictionary = m;
     });
 
@@ -39,16 +40,13 @@ export class ExportComponent implements OnInit {
   }
 
   import() {
-    console.log(this.product.getRawValue());
     this.mainService.exportProduct(this.product.getRawValue()).subscribe(m => {
-      console.log(m);
+      this.notificationsService.show();
     });
   }
 
   changeDropdown() {
     const vl = this.product.controls.name.value;
-    console.log(this.productDictionary);
-    console.log(vl);
     this.maxAmount = this.productDictionary.filter((m: any): any => {
       return m.name == vl;
     })[0].amount;

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { DictionariesService } from '../../services/dictionaries.service';
 import { MainService } from '../../services/main.service';
 import { DatePipe } from '@angular/common';
+import { NotificationsService } from '../../services/notifications.service';
 
 @Component({
   selector: 'app-import',
@@ -19,6 +20,7 @@ export class ImportComponent implements OnInit {
     private dictionariesService: DictionariesService,
     private router: Router,
     private datePipe: DatePipe,
+    private notificationsService: NotificationsService,
     private mainService: MainService) { }
 
   ngOnInit(): void {
@@ -37,9 +39,8 @@ export class ImportComponent implements OnInit {
   }
 
   import() {
-    console.log(this.product.getRawValue());
     this.mainService.importProduct(this.product.getRawValue()).subscribe(m => {
-      console.log(m);
+      this.notificationsService.show();
     });
   }
 

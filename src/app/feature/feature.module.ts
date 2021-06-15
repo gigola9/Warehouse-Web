@@ -30,7 +30,7 @@ import { WarehousesComponent } from './warehouses/warehouses.component';
     StatisticComponent,
     AdminComponent,
     UsersComponent,
-    WarehousesComponent
+    WarehousesComponent,
   ],
   imports: [
     FormsModule,
