@@ -1,0 +1,16 @@
+.notification {
+  width: 340px;
+  height: 55px;
+  border: 3.5px solid #76a8fa;
+  border-radius: 8px;
+  z-index: 100;
+  font-weight: bold;
+  background-color: #ebf5ff;
+  color: #2656bb;
+  transition: 0.5s ease;
+}
+
+p {
+  margin-top: 15px;
+  margin-left: 10px;
+}
