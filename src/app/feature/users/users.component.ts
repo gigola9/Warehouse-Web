@@ -70,7 +70,7 @@ export class UsersComponent implements OnInit {
       element.edit = false;
     });
     this.mainService.editUser(ob).subscribe((m) => {
-      this.notificationsService.show();
+      // this.notificationsService.show();
     });
   }
 
@@ -96,5 +96,4 @@ export class UsersComponent implements OnInit {
   goBack() {
     this.router.navigateByUrl('/');
   }
-
 }

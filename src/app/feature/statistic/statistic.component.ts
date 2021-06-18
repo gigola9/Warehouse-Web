@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivitiesModel } from '../../shared/models/ActivitiesModel';
 import { DictionariesService } from '../services/dictionaries.service';
+import { ExcelService } from '../services/excel.service';
 
 @Component({
   selector: 'app-statistic',
@@ -20,7 +21,7 @@ export class StatisticComponent implements OnInit {
   page: number = 1;
   sul = 0;
 
-  constructor(private dictionariesService: DictionariesService) { }
+  constructor(private dictionariesService: DictionariesService, private excelService: ExcelService) { }
 
   ngOnInit(): void {
     this.dictionariesService.getActivitiyDictionary().subscribe((m: ActivitiesModel[]) => {
@@ -40,6 +41,10 @@ export class StatisticComponent implements OnInit {
   changePage(e: any) {
     this.page = e;
     this.curList = this.list.slice(10 * (e - 1), (10 * (e - 1)) + 10);
+  }
+
+  expp() {
+    this.excelService.exportAsExcelFile(this.oldList, 'Statistic');
   }
 
 }
