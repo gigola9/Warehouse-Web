@@ -44,7 +44,7 @@ export class StatisticComponent implements OnInit {
   }
 
   expp() {
-    this.excelService.exportAsExcelFile(this.oldList, 'Statistic');
+    this.excelService.exportAsExcelFile(this.curList, 'Statistic');
   }
 
 }
